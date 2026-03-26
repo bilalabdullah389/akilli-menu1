@@ -73,10 +73,10 @@
         let mesaj = '🟢 *YENİ SİPARİŞ (MASA ${masa})*%0A%0A';
         let toplam = 0;
         sepet.forEach(i => {
-            mesaj += `• ${i.ad} - ${i.fiyat} TL%0A`;
+            mesaj += '• ${i.ad} - ${i.fiyat} TL%0A';
             toplam += i.fiyat;
         });
-        mesaj += `%0A💰 *Toplam: ${toplam} TL*`;
+        mesaj += '%0A💰 *Toplam: ${toplam} TL*';
         
         let tel = "905303617056"; // Buraya Kendi Numaranı Yaz!
         window.open('https://wa.me/${tel}?text=${mesaj}', '_blank');
