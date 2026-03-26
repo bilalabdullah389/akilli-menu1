@@ -70,17 +70,26 @@
         document.getElementById('cart-bar').style.display = 'flex';
     }
     function siparisGonder() {
-        let mesaj = '🟢 *YENİ SİPARİŞ (MASA ${masa})*%0A%0A';
+        if (sepet.length === 0) {
+            alert("Lütfen önce ürün seçiniz!");
+            return;
+        }
+
+        let mesaj = "🟢 *YENİ SİPARİŞ (MASA 1" + masa + ")*%0A%0A";
         let toplam = 0;
-        sepet.forEach(i => {
-            mesaj += '• ${i.ad} - ${i.fiyat} TL%0A';
-            toplam += i.fiyat;
-        });
-        mesaj += '%0A💰 *Toplam: ${toplam} TL*';
         
-        let tel = "905303617056"; // Buraya Kendi Numaranı Yaz!
-        window.open('https://wa.me/${tel}?text=${mesaj}', '_blank');
+        sepet.forEach(function(urun) {
+            mesaj += "• " + urun.ad + " - " + urun.fiyat + " TL%0A";
+            toplam += urun.fiyat;
+        });
+        
+        mesaj += "%0A💰 *Toplam: " + toplam + " TL*";
+        
+        // Kendi numaranı BURAYA tırnak içinde yaz (Örn: "905303617056")
+        let tel = "905303617056"; 
+        
+        // En güvenli WhatsApp link formatı budur:
+        let url = "https://api.whatsapp.com/send?phone=" + tel + "&text=" + mesaj;
+        
+        window.open(url, '_blank');
     }
-</script>
-</body>
-</html>
