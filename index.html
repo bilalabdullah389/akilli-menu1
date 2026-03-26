@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dijital Menü Sistemi</title>
+    <style>
+        body { font-family: sans-serif; background: #f8f9fa; margin: 0; padding: 20px; text-align: center; }
+        .header { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .masa-no { color: #27ae60; font-weight: bold; font-size: 1.2rem; margin-top: 10px; }
+        .btn-test { background: #27ae60; color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 16px; margin-top: 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>🌿 KAFE ADI</h1>
+    <div id="masa-ekran" class="masa-no">Masa Tanımlanıyor...</div>
+</div>
+
+<button class="btn-test" onclick="testSiparis()">Sistemi Test Et (WhatsApp)</button>
+
+<script>
+    // URL'deki masa numarasını yakalayan sihirli kod
+    const urlParams = new URLSearchParams(window.location.search);
+    const masa = urlParams.get('masa') || "Bilinmiyor";
+    document.getElementById('masa-ekran').innerText = "HOŞ GELDİNİZ! MASA: " + masa;
+function testSiparis() {
+        // BURAYI KENDİ NUMARANLA DEĞİŞTİR (Örn: 90505...)
+        let tel = "905303617056"; 
+        let mesaj = `🟢 TEST MESAJI%0A-----------%0A📍 Konum: MASA ${masa}%0A✅ Sistem Sorunsuz Çalışıyor!`;
+        
+        window.open('https://wa.me/${tel}?text=${mesaj}', '_blank');
+    }
+</script>
+
+</body>
+</html>
