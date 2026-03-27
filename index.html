@@ -1,103 +1,111 @@
 <!DOCTYPE html>
+
+
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akıllı Kafe Menü</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Atlas Cafe | Dijital Menü</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #27ae60; --bg: #f8f9fa; --text: #2c3e50; }
-        body { font-family: "Poppins", sans-serif; background: var(--bg); color: var(--text); margin: 0; padding-bottom: 100px; }
-        header { background: white; padding: 25px; text-align: center; border-radius: 0 0 30px 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-         .logo { font-size: 24px; font-weight: 600; color: var(--primary); margin: 0; text-transform: uppercase; }
-        .masa-badge { display: inline-block; background: var(--primary); color: white; padding: 4px 15px; border-radius: 20px; font-size: 12px; margin-top: 8px; }
-        .container { padding: 20px; max-width: 500px; margin: auto; }
-        h3 { border-left: 4px solid var(--primary); padding-left: 10px; margin-top: 30px; }
-        .menu-item { background: white; border-radius: 15px; display: flex; align-items: center; padding: 12px; margin-bottom: 15px; box-shadow: 0 5px 10px rgba(0,0,0,0.02); }
-        .item-img { width: 70px; height: 70px; border-radius: 12px; object-fit: cover; }
+        :root { --accent: #2ecc71; --dark: #1a1a1a; --danger: #e74c3c; --warning: #f1c40f; --info: #3498db; --bg: #fdfdfd; }
+        body { font-family: ‘Outfit’, sans-serif; background: var(--bg); margin: 0; padding-bottom: 160px; color: #333; }
+        header { background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); padding: 20px; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.05); }
+        .logo { font-size: 24px; font-weight: 600; color: var(--dark); margin: 0; letter-spacing: -1px; }
+        .masa-badge { display: inline-block; background: var(--dark); color: white; padding: 4px 15px; border-radius: 20px; font-size: 12px; margin-top: 8px; font-weight: 600; }
+        .quick-actions { display: flex; justify-content: center; gap: 8px; margin-top: 15px; flex-wrap: wrap; }
+        .action-btn { border: none; padding: 10px 15px; border-radius: 12px; font-size: 12px; font-weight: 600; cursor: pointer; color: white; display: flex; align-items: center; gap: 5px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .btn-garson { background: var(--danger); }
+        .btn-koz { background: var(--warning); color: #000; }
+        .btn-hesap { background: var(--info); }
+        .container { padding: 15px; max-width: 600px; margin: auto; }
+        h3 { margin: 25px 0 15px 10px; font-size: 18px; border-left: 4px solid var(--accent); padding-left: 10px; font-weight: 600; color: var(--dark); }
+        .menu-item { background: white; border-radius: 22px; display: flex; align-items: center; padding: 12px; margin-bottom: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); }
+        .item-img { width: 85px; height: 85px; border-radius: 18px; object-fit: cover; }
         .item-info { flex: 1; margin: 0 15px; }
-        .item-name { font-weight: 600; font-size: 16px; margin: 0; }
-        .item-price { color: var(--primary); font-weight: bold; }
-        .add-btn { background: var(--primary); color: white; border: none; width: 35px; height: 35px; border-radius: 10px; cursor: pointer; font-size: 20px; }
-        .cart-bar { position: fixed; bottom: 20px; left: 5%; width: 90%; background: var(--text); color: white; padding: 15px; border-radius: 15px; display: none; justify-content: space-between; align-items: center; z-index: 100; }
-        .order-btn { background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+        .item-name { font-weight: 600; font-size: 17px; margin: 0; color: var(--dark); }
+        .item-price { color: var(--accent); font-weight: 700; font-size: 15px; }
+        .add-btn { background: #f1f2f6; border: none; width: 42px; height: 42px; border-radius: 14px; font-size: 22px; cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; color: var(--dark); }
+        .add-btn:active { background: var(--accent); color: white; transform: scale(0.9); }
+        .cart-bar { position: fixed; bottom: 25px; left: 5%; width: 90%; background: var(--dark); color: white; padding: 18px; border-radius: 25px; display: none; justify-content: space-between; align-items: center; box-shadow: 0 15px 45px rgba(0,0,0,0.3); animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .order-btn { background: var(--accent); color: white; border: none; padding: 12px 22px; border-radius: 14px; font-weight: 700; cursor: pointer; font-size: 14px; }
     </style>
 </head>
 <body>
-
-<header>
+    <header>
     <p class="logo">🌿 ATLAS CAFE</p>
-    <div id="masa-no" class="masa-badge">MASA: Bekleniyor...</div>
+    <div id="masa-no" class="masa-badge">MASA --</div>
+    <div class="quick-actions">
+        <button class="action-btn btn-garson" onclick="hizliTalep('🛎️ GARSON TALEBİ')">🛎️ Garson</button>
+        <button class="action-btn btn-koz" onclick="hizliTalep('🔥 KÖZ TALEBİ')">🔥 Köz İste</button>
+        <button class="action-btn btn-hesap" onclick="hizliTalep('💳 HESAP TALEBİ')">💰 Hesap</button>
+    </div>
 </header>
-
 <div class="container">
     <h3>💨 Nargileler</h3>
     <div class="menu-item">
-        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=200" class="item-img">
-        <div class="item-info">
-            <p class="item-name">Premium Nargile</p>
-            <span class="item-price">400 TL</span>
-            </div>
-        <button class="add-btn" onclick="sepeteEkle('Premium Nargile', 400)">+</button>
+        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=300" class="item-img">
+        <div class="item-info"><p class="item-name">Premium Nargile</p><span class="item-price">300 TL</span></div>
+        <button class="add-btn" onclick="sepeteEkle('Premium Nargile', 300)">+</button>
     </div>
-
-    <h3>☕ İçecekler</h3>
+    <h3>🍓 Oraletler & Sıcaklar</h3>
     <div class="menu-item">
-        <img src="https://images.unsplash.com/photo-1576091160550-2173bdd99825?w=200" class="item-img">
-        <div class="item-info">
-            <p class="item-name">Özel Demleme Çay</p>
-            <span class="item-price">25 TL</span>
-        </div>
-        <button class="add-btn" onclick="sepeteEkle('Çay', 25)">+</button>
+        <img src="https://images.unsplash.com/photo-1544787210-2211d7c309c7?w=300" class="item-img">
+        <div class="item-info"><p class="item-name">Özel Demleme Çay</p><span class="item-price">20 TL</span></div>
+        <button class="add-btn" onclick="sepeteEkle('Çay', 20)">+</button>
     </div>
-<h3>🍕 Atıştırmalıklar</h3>
     <div class="menu-item">
-        <img src="https://images.unsplash.com/photo-1573821663912-569905455b1c?w=200" class="item-img">
-        <div class="item-info">
-            <p class="item-name">Karışık pizza</p>
-            <span class="item-price">300 TL</span>
-        </div>
-        <button class="add-btn" onclick=“sepeteEkle('Karışık Çerez', 120)”>+</button>
+        <img src="https://images.unsplash.com/photo-1594631252845-29fc4586bc5c?w=300" class="item-img">
+        <div class="item-info"><p class="item-name">Kuşburnu Oralet</p><span class="item-price">25 TL</span></div>
+        <button class="add-btn" onclick="sepeteEkle('Kuşburnu Oralet', 25)">+</button>
+    </div>
+    <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?w=300" class="item-img">
+        <div class="item-info"><p class="item-name">Portakal Oralet</p><span class="item-price">25 TL</span></div>
+        <button class= "add-btn" onclick="sepeteEkle('Portakal Oralet', 25)">+</button>
+    </div>
+    <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1615484477778-ca3b77940c25?w=300" class="item-img">
+        <div class="item-info"><p class="item-name">Kivi Oralet</p><span class="item-price">25 TL</span></div>
+        <button class="add-btn" onclick="sepeteEkle('Kivi Oralet', 25)">+</button>
     </div>
 </div>
-
 <div id="cart-bar" class="cart-bar">
-    <div><span id="adet"style="font-weight:bold; color:#27ae60">0</span> Ürün Sepette</div>
+    <div><span id="adet" style="color:var(--accent); font-weight:bold;">0</span> Ürün Seçildi</div>
     <button class="order-btn" onclick="siparisGonder()">Siparişi Gönder 🚀</button>
+</div>
 <script>
     let sepet = [];
     const urlParams = new URLSearchParams(window.location.search);
-    const masa = urlParams.get('masa') || "Bilinmiyor";
-    document.getElementById('masa-no').innerText = "MASA: " + masa;
+    const masa = urlParams.get('masa') || "--";
+    const telefon = "905303617056"; 
+
+    document.getElementById('masa-no').innerText = "MASA: " + (masa === "--" ? "Bilinmiyor" : masa);
+    function masaKontrol() {
+        if (masa === “--“) { alert(“⚠️ HATA: Masa numarası algılanamadı!”); return false; }
+        return true;
+    }
 
     function sepeteEkle(ad, fiyat) {
-        sepet.push({ad, fiyat});
+        sepet.push({ad: ad, fiyat: fiyat});
         document.getElementById('adet').innerText = sepet.length;
         document.getElementById('cart-bar').style.display = 'flex';
+        if (window.navigator.vibrate) window.navigator.vibrate(50);
     }
-    function siparisGonder() {
-        if (sepet.length === 0) {
-            alert("Lütfen önce ürün seçiniz!");
-            return;
-        }
+    function hizliTalep(baslik) {
+        if (!masaKontrol()) return;
+        let mesaj = baslik + "%0A📍 *Masa: " + masa + "*%0A_Lütfen masaya geliniz._";
+        window.open("https://api.whatsapp.com/send?phone=" + telefon + "&text=" + mesaj, '_blank');
+    }
 
+    function siparisGonder() {
+        if (!masaKontrol() || sepet.length === 0) return;
         let mesaj = "🟢 *YENİ SİPARİŞ (MASA " + masa + ")*%0A%0A";
         let toplam = 0;
-        
-        sepet.forEach(function(urun) {
-            mesaj += "• " + urun.ad + " - " + urun.fiyat + " TL%0A";
-            toplam += urun.fiyat;
-        });
-        
+        sepet.forEach(urun => { mesaj += "• " + urun.ad + " - " + urun.fiyat + " TL%0A"; toplam += urun.fiyat; });
         mesaj += "%0A💰 *Toplam: " + toplam + " TL*";
-        
-        // Kendi numaranı BURAYA tırnak içinde yaz (Örn: "905303617056")
-        let tel = "905303617056"; 
-        
-        // En güvenli WhatsApp link formatı budur:
-        let url = "https://api.whatsapp.com/send?phone=" + tel + "&text=" + mesaj;
-        
-        window.open(url, '_blank');
+        window.open("https://api.whatsapp.com/send?phone=" + telefon + "&text=" + mesaj, '_blank');
     }
 </script>
 </body>
