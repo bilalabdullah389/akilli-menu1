@@ -78,12 +78,18 @@
 <script>
     let sepet = [];
     const urlParams = new URLSearchParams(window.location.search);
-    const masa = urlParams.get('masa') || "--";
-    const telefon = "905303617056"; 
+    let masa = urlParams.get('masa'); 
+    const telefon = “905303617056”; 
+
+    if (!masa) { masa = "--"; }
 
     document.getElementById('masa-no').innerText = "MASA: " + (masa === "--" ? "Bilinmiyor" : masa);
+
     function masaKontrol() {
-        if (masa === “--“) { alert(“⚠️ HATA: Masa numarası algılanamadı!”); return false; }
+        if (masa === "--") { 
+            alert("⚠️ HATA: Masa numarası algılanamadı! Linkin sonuna ?masa=1 eklemelisiniz."); 
+            return false; 
+        }
         return true;
     }
 
