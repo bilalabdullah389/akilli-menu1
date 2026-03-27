@@ -27,37 +27,43 @@
 
 <header>
     <p class="logo">🌿 ATLAS CAFE</p>
-    <div id="masa-no" class="masa-badge">MASA: --</div>
+    <div id="masa-no" class="masa-badge">MASA: Bekleniyor...</div>
 </header>
 
 <div class="container">
     <h3>💨 Nargileler</h3>
     <div class="menu-item">
-        <img src="https://images.unsplash.com/photo-1542618933-7023c726590b?w=150" class="item-img">
+        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=200" class="item-img">
         <div class="item-info">
             <p class="item-name">Premium Nargile</p>
             <span class="item-price">400 TL</span>
             </div>
         <button class="add-btn" onclick="sepeteEkle('Premium Nargile', 400)">+</button>
     </div>
-        <button class=“add-btn” onclick=“sepeteEkle(‘Premium Nargile’, 400)”>+</button>
-    </div>
 
     <h3>☕ İçecekler</h3>
     <div class="menu-item">
-        <img src="https://images.unsplash.com/photo-1544145945-f904253d0c7b?w=150" class="item-img">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173bdd99825?w=200" class="item-img">
         <div class="item-info">
             <p class="item-name">Özel Demleme Çay</p>
             <span class="item-price">25 TL</span>
         </div>
         <button class="add-btn" onclick="sepeteEkle('Çay', 25)">+</button>
     </div>
+<h3>🍕 Atıştırmalıklar</h3>
+    <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1573821663912-569905455b1c?w=200" class="item-img">
+        <div class="item-info">
+            <p class="item-name">Karışık Çerez</p>
+            <span class="item-price">120 TL</span>
+        </div>
+        <button class="add-btn" onclick=“sepeteEkle('Karışık Çerez', 120)”>+</button>
+    </div>
 </div>
 
 <div id="cart-bar" class="cart-bar">
-    <div><span id="adet">0</span> Ürün Seçildi</div>
-    <button class="order-btn" onclick="siparisGonder()">Siparişi WhatsApp'tan Gönder</button>
-</div>
+    <div><span id="adet"style="font-weight:bold; color:#27ae60">0</span> Ürün Sepette</div>
+    <button class="order-btn" onclick="siparisGonder()">Siparişi Gönder 🚀</button>
 <script>
     let sepet = [];
     const urlParams = new URLSearchParams(window.location.search);
